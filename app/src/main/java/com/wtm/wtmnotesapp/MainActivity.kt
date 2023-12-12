@@ -44,6 +44,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.wtm.wtmnotesapp.screens.AddNoteScreen
 import com.wtm.wtmnotesapp.screens.NoteListScreen
 import com.wtm.wtmnotesapp.ui.theme.WTMNotesAppTheme
 
@@ -57,9 +61,26 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    NoteListScreen()
+                    AppNavigation()
                 }
             }
+        }
+    }
+}
+
+@Composable
+fun AppNavigation(){
+    val navController = rememberNavController()
+
+    NavHost(
+        navController = navController,
+        startDestination = "note-list"
+    ){
+        composable("note-list"){
+            NoteListScreen(navController)
+        }
+        composable("add-note"){
+            AddNoteScreen()
         }
     }
 }

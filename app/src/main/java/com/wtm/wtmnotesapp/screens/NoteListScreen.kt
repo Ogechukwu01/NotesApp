@@ -26,6 +26,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.wtm.wtmnotesapp.AppNavigation
+import com.wtm.wtmnotesapp.Routes
 import com.wtm.wtmnotesapp.components.NoteItem
 
 
@@ -71,7 +73,7 @@ fun NoteListScreen(navController: NavController){
             }
         },
         floatingActionButton = {
-            FloatingActionButton(onClick = { navController.navigate("add-note") }) {
+            FloatingActionButton(onClick = { navController.navigate(Routes.AddNoteRoute) }) {
                 Icon(
                     imageVector = Icons.Default.Add,
                     contentDescription = "Add New Note"
@@ -88,6 +90,6 @@ fun NoteListScreenPreview(){
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
     ) {
-//        NoteListScreen()
+        AppNavigation()
     }
 }

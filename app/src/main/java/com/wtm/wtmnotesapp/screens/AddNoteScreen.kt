@@ -35,8 +35,8 @@ import com.wtm.wtmnotesapp.view_model.NoteViewModel
 @Composable
 fun AddNoteScreen(navController: NavController) {
     val noteViewModel: NoteViewModel = viewModel()
-    val title by remember{ mutableStateOf(noteViewModel.title) }
-    val content by remember{ mutableStateOf(noteViewModel.noteContent) }
+    var title by rememberSaveable{ mutableStateOf("") }
+    var content by rememberSaveable{ mutableStateOf("") }
 
     Scaffold(
         topBar = {
@@ -49,7 +49,10 @@ fun AddNoteScreen(navController: NavController) {
                     navigationIconContentColor = Color.White
                 ),
                 navigationIcon = {
-                    IconButton(onClick = {navController.popBackStack()}){
+                    IconButton(onClick = {
+                        noteViewModel.saveNote(title, content)
+                        navController.popBackStack()
+                    }){
                         Icon(
                             imageVector = Icons.Default.ArrowBack,
                             contentDescription = "Back Button"
@@ -68,23 +71,17 @@ fun AddNoteScreen(navController: NavController) {
                 OutlinedTextField(
                     modifier = Modifier.fillMaxWidth(),
                     value = title,
-                    onValueChange = { value-> noteViewModel.title = value},
+                    onValueChange = { value-> title = value},
                     label = {Text("Note Title")}
                 )
                 
                 TextField(
                     modifier = Modifier.fillMaxWidth(),
                     value = content,
-                    onValueChange = { value -> noteViewModel.noteContent = value},
+                    onValueChange = { value -> content = value},
                     label = {Text("Note Content")},
                 )
             }
         }
     )
-}
-
-@Preview
-@Composable
-fun AddNoteScreenPreview(){
-//    AddNoteScreen(navController)
 }

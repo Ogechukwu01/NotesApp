@@ -50,7 +50,10 @@ fun AddNoteScreen(navController: NavController) {
                 ),
                 navigationIcon = {
                     IconButton(onClick = {
+                        //saves the note
                         noteViewModel.saveNote(title, content)
+
+                        //Take user back
                         navController.popBackStack()
                     }){
                         Icon(

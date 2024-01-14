@@ -77,8 +77,8 @@ fun NoteListScreen(navController: NavController){
                     .fillMaxSize()
             ) {
                 //Note Items WIll be here
-                items(listOfNotes){
-                    NoteItem()
+                items(listOfNotes){note ->
+                    NoteItem(note =  note, navController = navController)
                 }
             }
         },

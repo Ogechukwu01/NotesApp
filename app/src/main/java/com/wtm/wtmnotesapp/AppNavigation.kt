@@ -5,6 +5,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.wtm.wtmnotesapp.screens.AddNoteScreen
+import com.wtm.wtmnotesapp.screens.NoteDetailsScreen
 import com.wtm.wtmnotesapp.screens.NoteListScreen
 
 
@@ -22,10 +23,14 @@ fun AppNavigation(){
         composable(Routes.AddNoteRoute){
             AddNoteScreen(navController)
         }
+        composable(Routes.NoteDetails){
+            NoteDetailsScreen(navController = navController)
+        }
     }
 }
 
 object Routes{
     val NoteListRoute = "note-list"
     val AddNoteRoute = "add-note"
+    val NoteDetails = "note-details"
 }

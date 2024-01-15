@@ -1,5 +1,6 @@
 package com.wtm.wtmnotesapp
 
+import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -23,8 +24,11 @@ fun AppNavigation(){
         composable(Routes.AddNoteRoute){
             AddNoteScreen(navController)
         }
-        composable(Routes.NoteDetails){
-            NoteDetailsScreen(navController = navController)
+        composable("note-details/{noteId}"){
+            NoteDetailsScreen(
+                navController = navController,
+                noteId = it.arguments!!.getString("noteId")!!
+            )
         }
     }
 }
@@ -32,5 +36,7 @@ fun AppNavigation(){
 object Routes{
     val NoteListRoute = "note-list"
     val AddNoteRoute = "add-note"
-    val NoteDetails = "note-details"
+    fun NoteDetails(noteId: String): String{
+        return "note-details/$noteId"
+    }
 }

@@ -21,7 +21,9 @@ fun NoteItem(note: Note, navController: NavController){
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
-            .clickable { navController.navigate(Routes.NoteDetails) }
+            .clickable {
+                navController.navigate(Routes.NoteDetails(note.id.toString()))
+            }
     ) {
         Column(
             modifier = Modifier

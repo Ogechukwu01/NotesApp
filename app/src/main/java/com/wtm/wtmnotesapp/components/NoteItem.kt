@@ -32,9 +32,13 @@ fun NoteItem(note: Note, navController: NavController){
         ){
             Text(
                 text=note.title,
-                fontWeight = FontWeight.Black
+                fontWeight = FontWeight.Black,
+                maxLines = 3
             )
-            Text(text=note.content)
+            Text(
+                text=note.content,
+                maxLines = 3
+            )
         }
     }
 }

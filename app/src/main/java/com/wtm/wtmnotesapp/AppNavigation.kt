@@ -30,6 +30,7 @@ fun AppNavigation(){
                 noteId = it.arguments!!.getString("noteId")!!
             )
         }
+
     }
 }
 

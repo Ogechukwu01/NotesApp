@@ -14,7 +14,7 @@ interface NoteDao {
     @Insert(onConflict = OnConflictStrategy.ABORT)
     suspend fun saveNote(note: Note)
 
-    @Query("select * from notes")
+    @Query("select * from notes order by id DESC")
     fun fetchNotes(): LiveData<List<Note>>
 
     @Query("SELECT * FROM notes WHERE id = :noteId")

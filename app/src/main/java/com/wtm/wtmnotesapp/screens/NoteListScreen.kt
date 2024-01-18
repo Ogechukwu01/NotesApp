@@ -1,6 +1,9 @@
 package com.wtm.wtmnotesapp.screens
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -24,6 +27,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.key
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -39,6 +43,7 @@ import com.wtm.wtmnotesapp.models.Note
 import com.wtm.wtmnotesapp.view_model.NoteViewModel
 
 
+@RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NoteListScreen(navController: NavController){
@@ -61,12 +66,7 @@ fun NoteListScreen(navController: NavController){
                             contentDescription = "Search for note"
                         )
                     }
-                    IconButton(onClick = {}){
-                        Icon(
-                            imageVector = Icons.Default.MoreVert,
-                            contentDescription = "More Icon"
-                        )
-                    }
+
                 }
             )
         },
@@ -78,7 +78,9 @@ fun NoteListScreen(navController: NavController){
             ) {
                 //Note Items WIll be here
                 items(listOfNotes){note ->
-                    NoteItem(note =  note, navController = navController)
+                    key(note){
+                        NoteItem(note = note, navController = navController)
+                    }
                 }
             }
         },

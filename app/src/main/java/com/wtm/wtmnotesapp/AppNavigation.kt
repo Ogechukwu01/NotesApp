@@ -22,7 +22,7 @@ fun AppNavigation(){
             NoteListScreen(navController)
         }
         composable(Routes.AddNoteRoute){
-            AddNoteScreen(navController)
+            //AddNoteScreen(navController)
         }
         composable("note-details/{noteId}"){
             NoteDetailsScreen(

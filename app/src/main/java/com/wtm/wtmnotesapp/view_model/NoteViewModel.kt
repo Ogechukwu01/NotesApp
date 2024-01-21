@@ -63,7 +63,7 @@ class NoteViewModel(val applicationn: Application) : AndroidViewModel(applicatio
 
      fun updateNote(note: Note){
           viewModelScope.launch {
-               db.noteDao().updateNote(note)
+               //db.noteDao().updateNote(note)
           }
      }
 }
